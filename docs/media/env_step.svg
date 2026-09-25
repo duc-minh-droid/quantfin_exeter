@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 250" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="960" height="250" fill="#ffffff"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="24" y="32" font-size="16" font-weight="bold" fill="#0f172a">One environment step (physical mode, as used by the web app)</text>
+
+  <rect x="24" y="60" width="150" height="110" rx="8" fill="#e0f2fe" stroke="#0369a1"/>
+  <text x="99" y="88" text-anchor="middle" font-weight="bold" fill="#0f172a">state s_t</text>
+  <text x="99" y="110" text-anchor="middle" fill="#334155">inventory, time left,</text>
+  <text x="99" y="128" text-anchor="middle" fill="#334155">liq, vol, regime,</text>
+  <text x="99" y="146" text-anchor="middle" fill="#334155">TWAP gap, news z</text>
+
+  <rect x="214" y="60" width="130" height="110" rx="8" fill="#fef3c7" stroke="#b45309"/>
+  <text x="279" y="100" text-anchor="middle" font-weight="bold" fill="#0f172a">PPO</text>
+  <text x="279" y="124" text-anchor="middle" fill="#334155">a_t in [0, 1]</text>
+
+  <rect x="384" y="60" width="170" height="110" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="469" y="88" text-anchor="middle" font-weight="bold" fill="#0f172a">slice size</text>
+  <text x="469" y="110" text-anchor="middle" fill="#334155">TWAP slice</text>
+  <text x="469" y="128" text-anchor="middle" fill="#334155">+ (2a - 1) * 0.15 * x_t</text>
+  <text x="469" y="146" text-anchor="middle" fill="#334155">cap 25% of order</text>
+
+  <rect x="594" y="60" width="160" height="110" rx="8" fill="#ede9fe" stroke="#6d28d9"/>
+  <text x="674" y="88" text-anchor="middle" font-weight="bold" fill="#0f172a">fill price</text>
+  <text x="674" y="110" text-anchor="middle" fill="#334155">close * (1 - impact)</text>
+  <text x="674" y="128" text-anchor="middle" fill="#334155">impact grows with</text>
+  <text x="674" y="146" text-anchor="middle" fill="#334155">sqrt(participation)</text>
+
+  <rect x="794" y="60" width="142" height="110" rx="8" fill="#fce7f3" stroke="#be185d"/>
+  <text x="865" y="88" text-anchor="middle" font-weight="bold" fill="#0f172a">reward r_t</text>
+  <text x="865" y="110" text-anchor="middle" fill="#334155">beat TWAP slice</text>
+  <text x="865" y="128" text-anchor="middle" fill="#334155">minus impact cost</text>
+  <text x="865" y="146" text-anchor="middle" fill="#334155">minus inventory risk</text>
+
+  <path d="M174,115 L214,115" stroke="#334155" stroke-width="1.5" marker-end="url(#b)"/>
+  <path d="M344,115 L384,115" stroke="#334155" stroke-width="1.5" marker-end="url(#b)"/>
+  <path d="M554,115 L594,115" stroke="#334155" stroke-width="1.5" marker-end="url(#b)"/>
+  <path d="M754,115 L794,115" stroke="#334155" stroke-width="1.5" marker-end="url(#b)"/>
+  <path d="M865,170 L865,210 L99,210 L99,174" stroke="#334155" stroke-width="1.5" fill="none" stroke-dasharray="4 3" marker-end="url(#b)"/>
+  <text x="482" y="230" text-anchor="middle" fill="#334155">next day: x_{t+1} = x_t - v_t; episode ends after T days, leftover inventory is penalised</text>
+</svg>
